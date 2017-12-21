@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>加载</title>
+</head>
+<body>
+<style>
+    canvas{
+        border:1px solid #ccc;
+    }
+</style>
+   <canvas width="600px" height="600px"></canvas>
+   <script>
+       let canvas = document.querySelector('canvas');
+       let ctx = canvas.getContext('2d');
+       num = 0;
+       let t = setInterval (function(){
+           num++;
+           let qq = Math.PI*2/100;
+           let r = 250;
+           ctx.clearRect(0,0,600,600);
+           ctx.beginPath();
+           ctx.strokeStyle = '#00d3ff';
+           ctx.arc(300,300,r,0,qq*num);
+           ctx.stroke();
+           ctx.font = '30px italic';
+           ctx.textAlign = 'center';
+           ctx.fillStyle = '#0081ff';
+           ctx.fillText(num+'%',300,300);
+           if(num == 100){
+               return num = 0;
+           }
+       },60);
+   </script>
+</body>
+</html>
