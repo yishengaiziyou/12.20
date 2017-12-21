@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多边形</title>
+</head>
+<style>
+    canvas{
+        border:1px solid green;
+    }
+</style>
+<body>
+<canvas width="300px" height="300px"></canvas>
+<script>
+    let canvas = document.querySelector('canvas');
+    let ctx = canvas.getContext('2d');
+    move(6);
+    function move(num){
+        let ang = 2*Math.PI / num;
+        let r = 100;
+        ctx.strokeStyle = 'red';
+        ctx.beginPath();
+        ctx.moveTo(150+r,150);
+        for(let i = 0; i <num; i++){
+            let x = 150 +r*Math.cos(i*ang);
+            let y = 150 +r*Math.sin(i*ang);
+            ctx.lineTo(x,y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+    }
+</script>
+</body>
+</html>

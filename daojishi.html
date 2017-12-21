@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>十分钟倒计时</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        list-style: none;
+    }
+    .box{
+        width:500px;
+        height: 200px;
+        background: #ccc;
+        margin:200px auto;
+        font-size: 30px;
+        line-height: 200px;
+        text-align: center;
+        border-radius: 50%;
+        color: green;
+    }
+    span{
+        color: red;
+    }
+</style>
+<body>
+<div class="box">十分钟结束还有：<span></span>分<span></span>秒</div>
+<script>
+    //    let date = new Date('14:30:00 12/22/2017');//设置需要的时间。
+    //    let date = new Date(2017,11,20,10,30,30);//按照年月日时分秒设置时，月份需要比实际月份小一个月。
+    //    date.getFullYear();//今年是几年
+    //    date.getMonth();//0-11  设置减一获取加一
+    //    date.getDate();//今天为几号
+    //    date.getDay();//今天为周几
+    //    date.getHours();//当前为几点
+    //    date.getTime();//1970年到当前的时间毫秒
+    //    date.getTimezoneOffset();//时差
+    let spans = document.querySelectorAll('span');//获取span元素
+    let date = new Date();//声明一个时间
+    date.setMinutes(date.getMinutes()+10);//当前时间+10分钟
+    move();
+    setInterval(move,1000);//开启时间函数
+    function move(){
+        let arr = [];//空数组
+        let now  = new Date();//声明现在的时间
+        let m = parseInt((date.getTime() - now.getTime())/1000);//秒
+        let f = parseInt(m/60%60);//分
+        arr.push(f);
+        let s = parseInt(m%60);//秒
+        arr.push(s);
+        spans.forEach((element,index) => {
+            element.innerText = arr[index];
+        })
+    }
+</script>
+</body>
+</html>
